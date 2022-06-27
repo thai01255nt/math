@@ -1,1 +1,1 @@
-# [Linear algebra](linear_algebra.txt) #
+# [Linear algebra](linear_algebra.md) #
