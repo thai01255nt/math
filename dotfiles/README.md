@@ -15,7 +15,7 @@ sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt-get install fish
 # open fish shell and set default shell
 fish
-chsh -s /user/bin/fish
+chsh -s /usr/bin/fish
 # To config your theme
 fish_config browse
 ```
