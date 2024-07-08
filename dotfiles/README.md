@@ -35,7 +35,7 @@ tmux source ~/.config/tmux/tmux.conf
 ```
 #### create [ide](./dotfiles/.scripts/ide) command for fast split tmux pane
 ```
-cp ./dotfiles/.scripts/ide /user/bin
+cp ./dotfiles/.scripts/ide /usr/bin
 ```
 ### Git
 # if using these configs, need install peco for query git hist 
