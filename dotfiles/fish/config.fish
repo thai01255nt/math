@@ -1,3 +1,7 @@
+# Themes
+oh-my-posh init fish | source
+oh-my-posh init fish --config ~/.config/oh-my-posh/custom.omp.json | source 
+
 set fish_greeting ""
 
 set -gx TERM xterm-256color

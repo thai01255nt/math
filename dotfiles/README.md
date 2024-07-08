@@ -28,17 +28,6 @@ exec fish
 # For the theme, you can choose another theme
 # make file custom.omp.json in ~/.config/oh-my-posh and run
 oh-my-posh init fish --config ~/.config/oh-my-posh/custom.omp.json | source
-```
-### Alias
-```
-# Aliases
-alias g="git"
-alias vim="nvim"
-
-alias ls="ls -p -G"
-alias la="ls -A"
-alias lla="ll -A"
-```
 ### Tmux
 ```
 # create tmux conf and source
@@ -54,17 +43,24 @@ cp ./dotfiles/.scripts/ide /user/bin
 ## Ingredients:
 - fish
 - [fisher](https://github.com/jorgebucaran/fisher) (plugin manager for fish)
-- shellder (optional): theme ```fisher install simnalamburt/shellder```
+- shellder (optional): theme 
+```
+fisher install simnalamburt/shellder
+sudo apt install fzf
+sudo apt install fd-find
+sudo apt install bat
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/.local/bin/bat
+fisher install PatrickF1/fzf.fish
+```
+- [fzf.fish](https://github.com/PatrickF1/fzf.fish): finding ```fisher install PatrickF1/fzf.fish```
 - nerd fonts
 - z: plugin for directory jumping ```fisher install jethrokuan/z```
 - peco: filtering tool
 - eza (exa on macos): alternative for ls
-- ghq (optional): Local Git repository organizer
+- ghq (not used): Local Git repository organizer
 ```
 # add fish config
-cat ./dotfiles/fish/config-linux.fish >> ~/.config/fish/config-linux.fish
-cat ./dotfiles/fish/config-osx.fish >> ~/.config/fish/config-osx.fish
-cat ./dotfiles/fish/config-window.fish >> ~/.config/fish/config-window.fish
-cat ./dotfiles/fish/config.fish >> ~/.config/fish/config.fish
+cp -rf ./dotfiles/fish/. ~/.config/fish/
 
 ```
