@@ -16,6 +16,8 @@ sudo apt-get install fish
 # open fish shell and set default shell
 fish
 chsh -s /user/bin/fish
+# To config your theme
+fish_config browse
 ```
 ### Theme
 [oh my posh](https://ohmyposh.dev/docs/installation/linux)
