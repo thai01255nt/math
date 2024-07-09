@@ -37,7 +37,9 @@
             "background": "#444444",
             "properties": {
               "style": "full",
-              "enable_hyperlink": true
+              "enable_hyperlink": true,
+              "folder_format": "%.4s",
+              "right_format": "%s"
             }
           },
           {
