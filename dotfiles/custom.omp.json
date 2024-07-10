@@ -30,15 +30,15 @@
             }
           },
           {
-            "background": "#906cff",
-            "foreground": "#111111",
+            "background": "white",
+            "foreground": "#444444",
             "powerline_symbol": "\uE0B0",
             "style": "powerline",
             "properties": {
               "display_mode": "context",
               "fetch_virtual_env": true,
               "folder_name_fallback": false,
-              "template": " \ue235 {{ .Venv }} ",
+              "template": "{{ if .Venv }}\ue235 {{ .Venv }}{{ end }}",
               "fetch_version": false
             },
             "type": "python"
