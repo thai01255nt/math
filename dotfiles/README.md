@@ -63,4 +63,6 @@ fisher install PatrickF1/fzf.fish
 # add fish config
 cp -rf ./dotfiles/fish/. ~/.config/fish/
 
+#
+:lua =require('vim.lsp.log').get_filename()
 ```
