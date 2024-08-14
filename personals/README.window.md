@@ -35,4 +35,9 @@ Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -Skip
 # fuzzy finder
 scoop install fzf
 Install-Module -Name PSFzf -Scope CurrentUser -Force
+scoop install fd
+scoop install bat
 #Set-PsFzOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+
+# lazy-vim
+git clone git@github.com:thai01255nt/lazy-vim.git  $env:LOCALAPPDATA\nvim
