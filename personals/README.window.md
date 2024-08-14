@@ -6,7 +6,7 @@ scoop install curl sudo jq
 winget install -e --id Git.Git
 
 # install neovim
-scoop install neovim
+scoop install neovim gcc make
 
 # cd into user folder config alias for shell
 cp dotfiles\.gitconfig $Home\.gitconfig
@@ -37,6 +37,7 @@ scoop install fzf
 Install-Module -Name PSFzf -Scope CurrentUser -Force
 scoop install fd
 scoop install bat
+scoop install ripgrep
 #Set-PsFzOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 
 # lazy-vim
