@@ -1,6 +1,6 @@
 # Themes
 oh-my-posh init fish | source
-oh-my-posh init fish --config ~/.config/oh-my-posh/custom.omp.json | source 
+oh-my-posh init fish --config ~/.config/oh-my-posh/custom.omp.json | source
 
 set fish_greeting ""
 
@@ -46,4 +46,4 @@ end
 set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
     source $LOCAL_CONFIG
-end 
+end
