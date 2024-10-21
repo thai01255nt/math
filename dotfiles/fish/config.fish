@@ -26,7 +26,6 @@ set -gx EDITOR nvim
 set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
-set -gx ANTHROPIC_API_KEY $ANTHROPIC_API_KEY
 
 # NodeJS
 set -gx PATH node_modules/.bin $PATH
