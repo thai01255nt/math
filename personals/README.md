@@ -15,7 +15,8 @@ cp .scripts/ide /usr/bin/
 cp custom.omp.json ~/.config/oh-my-posh
 cp .gitconfig ~/.gitconfig
 tmux source ~/.config/tmux/tmux.conf
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher 
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fisher install jorgebucaran/nvm.fish
 sudo apt install fzf
 sudo apt install fd-find
 sudo apt install bat
@@ -26,7 +27,7 @@ fisher install jethrokuan/z
 
 # PECO
 sudo apt install peco
- 
+
 #EZA
 sudo mkdir -p /etc/apt/keyrings
 wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
