@@ -14,9 +14,9 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -Function ForwardChar
 
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+Alt+f' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle ListView
+#Set-PSReadLineOption -PredictionViewStyle ListView
 # Fzf
 Import-Module PSFzf
 
@@ -25,7 +25,9 @@ $env:GIT_SSH = "C:\Windows\system32\OpenSSH\ssh.exe"
 
 # Alias
 Set-Alias -Name vim -Value nvim
-Set-Alias ll ls
+function lla {
+  Get-ChildItem . -Force
+}
 Set-Alias g git
 Set-Alias grep findstr
 Set-Alias tig 'C:\Program Files\Git\usr\bin\tig.exe'
