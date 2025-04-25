@@ -1,0 +1,5 @@
+FROM ubuntu:24.04
+COPY ./ubuntu-wait.sh .
+RUN chmod -R 777 ubuntu-wait.sh
+CMD ["./ubuntu-wait.sh"]
+
