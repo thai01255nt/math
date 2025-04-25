@@ -1,0 +1,11 @@
+FROM ubuntu:24.04
+COPY ./dotfiles ./dotfiles
+COPY ./docker.init.sh .
+RUN chmod -R 777 docker.init.sh && ./docker.init.sh
+COPY ./docker.install.sh .
+RUN chmod -R 777 docker.install.sh && ./docker.install.sh
+RUN chsh -s /usr/bin/fish
+COPY ./ubuntu-wait.sh .
+RUN chmod -R 777 ubuntu-wait.sh
+CMD ["./ubuntu-wait.sh"]
+
