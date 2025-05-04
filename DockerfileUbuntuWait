@@ -4,7 +4,9 @@ COPY ./docker.init.sh .
 RUN chmod -R 777 docker.init.sh && ./docker.init.sh
 COPY ./docker.install.sh .
 RUN chmod -R 777 docker.install.sh && ./docker.install.sh
-RUN chsh -s /usr/bin/fish
+COPY ./docker.sql-server.sh .
+RUN chmod -R 777 docker.sql-server.sh && ./docker.sql-server.sh
+RUN apt update && apt -y nodejs npm && npm install -g pyright
 COPY ./ubuntu-wait.sh .
 RUN chmod -R 777 ubuntu-wait.sh
 CMD ["./ubuntu-wait.sh"]
