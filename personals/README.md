@@ -6,6 +6,7 @@ sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt-get install fish
 chsh -s /usr/bin/fish
 exec fish
+sudo apt install lazygit
 mkdir ~/.config/tmux
 mkdir ~/.config/oh-my-posh
 set SOURCE_CONFIG_FOLDER=dotfiles
