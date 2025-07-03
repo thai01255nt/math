@@ -2,11 +2,14 @@
 sudo apt-get install build-essential
 
 # START
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit -D -t /usr/local/bin/
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt-get install fish
 chsh -s /usr/bin/fish
 exec fish
-sudo apt install lazygit
 mkdir ~/.config/tmux
 mkdir ~/.config/oh-my-posh
 set SOURCE_CONFIG_FOLDER=dotfiles
