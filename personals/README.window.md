@@ -56,3 +56,9 @@ scoop install ripgrep
 # lazy-vim
 
 git clone git@github.com:thai01255nt/lazy-vim.git $env:LOCALAPPDATA\nvim
+
+# komorebi
+
+scoop bucket add extras
+scoop install extras/komorebi
+Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
