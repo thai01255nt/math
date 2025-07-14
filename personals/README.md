@@ -51,4 +51,15 @@ sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.lis
 sudo apt update
 sudo apt install -y eza
 sudo apt-get install ripgrep
+
+# lazy vim
+git clone https://github.com/thai01255nt/lazy-vim.git ~/.config/nvim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+sudo mv /opt/nvim-linux-x86_64 /opt/nvim-linux64
+rm nvim-linux-x86_64.tar.gz
+nvm install lts
+nvm use lts
+npm install -g yarn
 ```
