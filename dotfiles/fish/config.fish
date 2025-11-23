@@ -20,6 +20,7 @@ alias ll "ls -l"
 alias lla "ll -A"
 alias g git
 command -qv nvim && alias vim nvim
+nvm use lts
 
 set -gx EDITOR nvim
 
