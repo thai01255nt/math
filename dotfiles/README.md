@@ -26,17 +26,18 @@ fish_config browse
 oh-my-posh init fish | source
 exec fish
 # For the theme, you can choose another theme
-# make file custom.omp.json in ~/.config/oh-my-posh and run
+# custom.omp.json is symlinked from this repo (see "Link dotfiles" below)
 oh-my-posh init fish --config ~/.config/oh-my-posh/custom.omp.json | source
-### Tmux
 ```
-# create tmux conf and source
+### Tmux
+Config is split per environment: `tmux.conf` (common) sources `wsl.conf` / `linux.conf` / `macos.conf`
+(clipboard `copy-command`: clip.exe / wl-copy or xclip / pbcopy).
+```
+# ~/.config/tmux is symlinked from this repo (see "Link dotfiles" below)
 tmux source ~/.config/tmux/tmux.conf
 ```
-#### create [ide](./dotfiles/.scripts/ide) command for fast split tmux pane
-```
-cp ./dotfiles/.scripts/ide /usr/bin
-```
+#### [ide](./.scripts/ide) command for fast split tmux pane
+Symlinked to `~/.local/bin/ide` in "Link dotfiles" below (no sudo needed).
 ### Git
 # if using these configs, need install peco for query git hist 
 ### Fish
@@ -60,8 +61,25 @@ fisher install PatrickF1/fzf.fish
 - eza (exa on macos): alternative for ls
 - ghq (not used): Local Git repository organizer
 ```
-# add fish config
-cp -rf ./dotfiles/fish/. ~/.config/fish/
+### Link dotfiles
+Configs are **symlinked** to this repo (clone it to `~/math`), so editing them edits the repo: commit/push to sync.
+Don't move/delete `~/math` (links break). Existing files are backed up to `~/.dotfiles-backup`.
+```
+R=~/math/dotfiles; B=~/.dotfiles-backup; mkdir -p $B ~/.config/fish ~/.config/oh-my-posh ~/.local/bin
+link() { [ -e "$2" ] && [ ! -L "$2" ] && mv "$2" "$B/"; ln -sfn "$1" "$2"; }
+link $R/tmux ~/.config/tmux
+for f in config.fish config-linux.fish config-osx.fish config-windows.fish; do link $R/fish/$f ~/.config/fish/$f; done
+link $R/custom.omp.json ~/.config/oh-my-posh/custom.omp.json
+link $R/.scripts/ide ~/.local/bin/ide   # tmux pane layout command
+# WSL only (agent-manager notify, see personals/AGENT-MANAGER.md)
+link $R/agent-manager/am-notify ~/.local/bin/am-notify
+link $R/agent-manager/powershell.exe ~/.local/bin/powershell.exe
+# check
+ls -l ~/.config/tmux ~/.config/fish/config*.fish ~/.config/oh-my-posh/custom.omp.json ~/.local/bin/am-notify
+```
+Only the 4 fish config files are linked; `functions/`, `conf.d/`, `fish_variables` stay local.
+Machine-specific fish settings go in `~/.config/fish/config-local.fish` (not in repo).
+```
 
 #
 :lua =require('vim.lsp.log').get_filename()

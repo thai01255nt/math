@@ -77,8 +77,11 @@ EOF
    - `am-notify.ps1`: the PowerShell part (lives on the Windows side next to the sounds)
    - `powershell.exe`: wrapper that drops agent-manager's built-in toast (it always plays `Notification.Default`, no setting to turn it off); every other `powershell.exe` call passes through. Works because `~/.local/bin` comes before the Windows dirs in PATH
 ```
-cp dotfiles/agent-manager/am-notify dotfiles/agent-manager/powershell.exe ~/.local/bin/
-cp dotfiles/agent-manager/am-notify.ps1 $D/
+# Linux side: symlink to the repo (edits go straight to the repo)
+ln -sfn ~/math/dotfiles/agent-manager/am-notify ~/.local/bin/am-notify
+ln -sfn ~/math/dotfiles/agent-manager/powershell.exe ~/.local/bin/powershell.exe
+# Windows side: copy (Windows can't follow a symlink into WSL) -> re-copy after editing
+cp ~/math/dotfiles/agent-manager/am-notify.ps1 $D/
 agent-manager settings set notify_command "$HOME/.local/bin/am-notify"
 # test (should show 1 toast + 1 bell)
 AM_TITLE="agent-manager test" AM_BODY="hello" ~/.local/bin/am-notify
