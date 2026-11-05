@@ -4,6 +4,8 @@
     "background": "theme",
     "glyph_mode": "advanced",
     "hidden_tools": "antigravity,codex,command-code,cursor,gemini,grok,hermes,muse,omp,opencode,pi",
+    "hide_header": "on",
+    "hide_stats": "on",
     "keybindings.list": "{\"filter\":[\"ctrl+f\"],\"step_in\":[\"ctrl+l\"],\"step_out\":[\"ctrl+h\"]}",
     "keybindings.session": "{\"detach\":[\"ctrl+h\"]}",
     "notify_command": "/home/thai/.local/bin/am-notify",
