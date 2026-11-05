@@ -93,13 +93,6 @@ Env passed to `notify_command`: `AM_NOTIFY_KIND` (waiting / finished / ...), `AM
 Keep `notifications on` in agent-manager, otherwise `notify_command` does not run either.
 In Windows Settings -> System -> Notifications: keep **Windows PowerShell** banners on (the toast comes from there).
 
-### Remove the default Windows beep
-The default "ding" is the terminal bell (tmux passes bells from every session, `bell-action any`), not the toast.
-agent-manager uses the default tmux server, so stop tmux from forwarding bells (already in `dotfiles/tmux/tmux.conf`):
-```
-set -g bell-action none
-# apply now without restarting tmux
-tmux set -g bell-action none
-```
-Only affects tmux; bells outside tmux still beep.
-Alternative (all Windows Terminal tabs): Settings -> Defaults -> Advanced -> Bell notification style -> uncheck Audible (`"bellStyle": ["window", "taskbar"]`).
+### Where the default Windows sound comes from
+agent-manager's built-in toast always plays `ms-winsoundevent:Notification.Default` (even with `notify_command` set) -> handled by the `powershell.exe` wrapper above.
+It is not the terminal bell: with tmux `bell-action any` (default) a test bell does not beep, so no tmux / Windows Terminal bell change is needed.
