@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "settings": {
+    "background": "theme",
+    "glyph_mode": "advanced",
+    "hidden_tools": "antigravity,codex,command-code,cursor,gemini,grok,hermes,muse,omp,opencode,pi",
+    "keybindings.list": "{\"filter\":[\"ctrl+f\"],\"step_in\":[\"ctrl+l\"],\"step_out\":[\"ctrl+h\"]}",
+    "keybindings.session": "{\"detach\":[\"ctrl+h\"]}",
+    "notify_command": "cd /mnt/c \u0026\u0026 powershell.exe -NoProfile -NonInteractive -c \"(New-Object Media.SoundPlayer \\\"C:\\Users\\thai0\\Music\\agent-sounds\\service-bell-20.wav\\\").PlaySync()\"",
+    "notify_finished": "on",
+    "theme": "paper",
+    "theme_auto": "on",
+    "worktree_default": "on"
+  }
+}

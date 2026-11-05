@@ -20,11 +20,12 @@ agent-manager settings set background theme
 agent-manager settings set worktree_default on
 agent-manager settings set notify_finished on
 ```
-Backup / restore all settings as JSON:
+Backup / restore settings (incl. custom keybindings and `notify_command`) as JSON, saved in [dotfiles/agent-manager.settings.json](../agent-manager.settings.json):
 ```
-agent-manager export --settings > agent-manager.settings.json
-agent-manager import --settings agent-manager.settings.json
+agent-manager export --settings dotfiles/agent-manager.settings.json
+agent-manager import --settings dotfiles/agent-manager.settings.json
 ```
+Import merges by key; `notify_command` has the Windows user (`thai0`) hard-coded. Do not commit a full export / `--connections` (may contain secrets).
 
 ## Keybindings
 UI: Settings -> Keybindings (press a key to rebind, `Reset keys` for defaults).
@@ -82,12 +83,12 @@ Keep `notifications on` in agent-manager, otherwise `notify_command` does not ru
 
 ### Remove the default Windows beep
 The default "ding" is the terminal bell (tmux passes bells from every session, `bell-action any`), not the toast.
-Make Windows Terminal flash instead of beeping: Settings -> Defaults -> Advanced -> Bell notification style -> Window + Taskbar, or in `settings.json`:
+agent-manager uses the default tmux server, so stop tmux from forwarding bells (already in `dotfiles/tmux/tmux.conf`):
 ```
-"profiles": {
-    "defaults": {
-        "bellStyle": ["window", "taskbar"]
-    }
-}
+set -g bell-action none
+# apply now without restarting tmux
+tmux set -g bell-action none
 ```
+Only affects tmux; bells outside tmux still beep.
+Alternative (all Windows Terminal tabs): Settings -> Defaults -> Advanced -> Bell notification style -> uncheck Audible (`"bellStyle": ["window", "taskbar"]`).
 Toasts show up under `WSL` in Windows Settings -> System -> Notifications (`explorer.exe ms-settings:notifications`); turn its sound off there if needed.
