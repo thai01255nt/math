@@ -1,0 +1,10 @@
+#!/bin/sh
+# agent-manager notify_command: silent Windows toast + custom wav.
+# AM_NOTIFY_SOUND: Windows path to .wav ; AM_NOTIFY_LOG: optional debug log
+SOUND="${AM_NOTIFY_SOUND:-C:\Users\thai0\Music\agent-sounds\service-bell-20.wav}"
+PS1='C:\Users\thai0\Music\agent-sounds\am-notify.ps1'
+LOG="${AM_NOTIFY_LOG:-/dev/null}"
+{ date; env | grep '^AM_'; } >> "$LOG"
+cd /mnt/c || exit 0
+T="${AM_TITLE:-agent-manager}" B="${AM_BODY:-}" WSLENV="T/u:B/u" \
+  powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "$PS1" -Sound "$SOUND" >> "$LOG" 2>&1

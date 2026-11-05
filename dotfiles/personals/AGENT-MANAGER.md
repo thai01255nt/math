@@ -72,14 +72,26 @@ with wave.open(dst, 'wb') as w:
     w.setparams(p); w.writeframes(a.tobytes())
 EOF
 ```
-3. Set the command (replace `thai0` with your Windows user) and test it:
+3. Install the notify scripts from [dotfiles/agent-manager](../agent-manager) (paths inside use the Windows user `thai0`, change if different):
+   - `am-notify`: the `notify_command`; shows a **silent** Windows toast (title/body from agent-manager) and plays the wav
+   - `am-notify.ps1`: the PowerShell part (lives on the Windows side next to the sounds)
+   - `powershell.exe`: wrapper that drops agent-manager's built-in toast (it always plays `Notification.Default`, no setting to turn it off); every other `powershell.exe` call passes through. Works because `~/.local/bin` comes before the Windows dirs in PATH
 ```
-agent-manager settings set notify_command 'cd /mnt/c && powershell.exe -NoProfile -NonInteractive -c "(New-Object Media.SoundPlayer \"C:\Users\thai0\Music\agent-sounds\service-bell-20.wav\").PlaySync()"'
-sh -c "$(agent-manager settings get notify_command)"
-# disable
+cp dotfiles/agent-manager/am-notify dotfiles/agent-manager/powershell.exe ~/.local/bin/
+cp dotfiles/agent-manager/am-notify.ps1 $D/
+agent-manager settings set notify_command "$HOME/.local/bin/am-notify"
+# test (should show 1 toast + 1 bell)
+AM_TITLE="agent-manager test" AM_BODY="hello" ~/.local/bin/am-notify
+# debug: log AM_* env and PowerShell output
+agent-manager settings set notify_command "AM_NOTIFY_LOG=$HOME/.cache/am-notify.log $HOME/.local/bin/am-notify"
+# other sound: AM_NOTIFY_SOUND='C:\Users\thai0\Music\agent-sounds\xxx.wav' in front of the command
+# undo
 agent-manager settings set notify_command ''
+rm ~/.local/bin/powershell.exe
 ```
+Env passed to `notify_command`: `AM_NOTIFY_KIND` (waiting / finished / ...), `AM_TITLE`, `AM_BODY`, `AM_SESSION_NAME`, `AM_SESSION_ID`, `AM_TOOL`, `AM_CWD`, `AM_BRANCH`.
 Keep `notifications on` in agent-manager, otherwise `notify_command` does not run either.
+In Windows Settings -> System -> Notifications: keep **Windows PowerShell** banners on (the toast comes from there).
 
 ### Remove the default Windows beep
 The default "ding" is the terminal bell (tmux passes bells from every session, `bell-action any`), not the toast.
@@ -91,4 +103,3 @@ tmux set -g bell-action none
 ```
 Only affects tmux; bells outside tmux still beep.
 Alternative (all Windows Terminal tabs): Settings -> Defaults -> Advanced -> Bell notification style -> uncheck Audible (`"bellStyle": ["window", "taskbar"]`).
-Toasts show up under `WSL` in Windows Settings -> System -> Notifications (`explorer.exe ms-settings:notifications`); turn its sound off there if needed.

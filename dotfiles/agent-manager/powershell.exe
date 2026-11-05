@@ -1,0 +1,6 @@
+#!/bin/sh
+# Drop agent-manager's built-in toast (it always plays Notification.Default);
+# am-notify (notify_command) shows its own silent toast + custom wav instead.
+# Every other powershell.exe call passes through unchanged.
+[ -n "$AM_TOAST_APPID" ] && exit 0
+exec /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "$@"
