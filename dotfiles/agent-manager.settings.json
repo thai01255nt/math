@@ -1,17 +1,17 @@
 {
   "version": 1,
   "settings": {
-    "background": "theme",
+    "background": "terminal",
     "glyph_mode": "advanced",
     "hidden_tools": "antigravity,codex,command-code,cursor,gemini,grok,hermes,muse,omp,opencode,pi",
     "hide_header": "off",
     "hide_stats": "on",
     "keybindings.list": "{\"filter\":[\"ctrl+f\"],\"step_in\":[\"ctrl+l\"],\"step_out\":[\"ctrl+h\"]}",
-    "keybindings.session": "{\"detach\":[\"ctrl+h\"]}",
+    "keybindings.session": "{\"detach\":[\"ctrl+h\",\"ctrl+q\"]}",
     "notify_command": "/home/thai/.local/bin/am-notify",
     "notify_finished": "on",
-    "theme": "paper",
-    "theme_auto": "on",
+    "theme": "classic",
+    "theme_auto": "off",
     "worktree_default": "on"
   }
 }
